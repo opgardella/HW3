@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+<h1>Headlines Found</h1>
+
+{% for n in news %}
+    <p>{{ n }}</p>
+{% endfor %}
+
+{% if not news %}
+    There are no news headlines to show yet.
+    Add headlines by going to the <a href="{{ url_for('news') }}">news form</a>
+{% endif %}
+
+{% endblock %}

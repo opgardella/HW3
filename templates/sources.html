@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+<h1>Sources Form</h1>
+<p>Enter where you get your news from.<p>
+
+<form action="{{ url_for('sources') }}" method="POST">
+    {{ form.name.label() }}{{ form.name() }}<br><br>
+    {{ form.source.label() }}{{ form.source() }}<br><br>
+    <ul>
+      {% for error in form.source.errors %}
+        <strong>{{ error }}</strong>
+      {% endfor %}
+    </ul>
+    {{ form.submit() }}
+    {{ form.hidden_tag() }}
+</form>
+
+<div>
+{% for me in get_flashed_messages() %}
+    <strong>* {{ me }} *</strong>
+{% endfor %}
+</div>
+
+<h3>Sources Logged<h3>
+  <ul>
+  {% for s in all_sources %}
+      <li>{{ s[0] }}<br><i>used by</i> {{ s[1] }}</li><br><br>
+  {% endfor %}
+  </ul>
+
+
+
+{% endblock %}

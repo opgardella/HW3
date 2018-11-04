@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+<!-- <h1> News <h1> -->
+
+<div class="page-header">
+    <h1>{% if num_news %}
+          {{ num_news }}
+        {% else %}
+          0
+        {% endif %}
+        possible news headlines saved.
+    </h1>
+</div>
+
+<h1>News Form</h1>
+<p>Find the most recent article title based on a keyword.</p>
+<p><i>Example keywords: New York, health, San Francisco</i></p>
+
+<form action="{{ url_for('news') }}" method="POST">
+    {{ form.keyword.label() }}{{ form.keyword() }}<br><br>
+    {{ form.submit() }}
+    {{ form.hidden_tag() }}
+</form>
+
+<div>
+{% for me in get_flashed_messages() %}
+    <strong>* {{ me }} *</strong>
+{% endfor %}
+</div>
+
+
+{% endblock %}

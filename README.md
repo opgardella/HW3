@@ -1,65 +1,38 @@
-# Homework 3 - SI 364 F18
+# Olivia Gardella
+# SI364 - Midterm
 
-### Deadline: October 14, 2018 at 11:59 PM
+## DESCRIPTION
+This application allows users to retrieve the most recent news headline related to a keyword they enter, as well as log what news sources they get their news from (one person can have many news sources). They can also view all the news results so far, all the sources logged so far, and all the names of visitors so far.
 
-## To submit
-
-* Fork and clone this repository.
-* Submit the link to your fork to the Canvas assignment as specified on Canvas.
-
-## Instructions
-
-There are a number of tasks to complete, mainly in the `SI364W18_HW3.py` file, in order to replicate **[this application](http://sample364hw3.herokuapp.com/)** locally.
-
-Each of the things you need to do is marked and described inside the `SI364W18_HW3.py` file, with a comment including **`TODO 364`**. For some, there are also hints provided.
-
-**NOTE:** If you don't already have your text editor set to *wrap* lines, you should change it so that it does -- that will make it MUCH easier to read the instructions. You can do that in the menu *View > Toggle Soft Wrap* in Atom and similar in Sublime Text.
-
-The majority of the 1000 total points for this assignment come from, approximately in order:
-
-* The correct view functions to fill in that are provided (`index`, `see_all_users`, `see_all_tweets`)
-* Creating the form and custom validation for it
-* Defining the models
-* Adding the `longest_tweet` route properly (see instructions in the file)
-* Doing the app setup (e.g. creating a database) according to the instructions
-
-However, that is *not* the order in which you should complete these tasks, because some can't be done without the others!
-
-*We will not grade code that does not run.* Make sure yours runs, even if it does not have every feature you want in it.
-
-**We recommend this approximate order of tasks:**
-
-* Consider and write/draw out the things you'll need to do and how data will move through the application. Make sure you understand the problem(s) at hand, and read through all the comments describing the assignment.
-* First do all the app setup. Make sure you've created a database, etc, and fill in that URL...
-* Define the form and test it out.
-* Define your models.
-* Work on, and then test, your scaffolded view functions, including making the database queries (which you can also check with the Flask shell as shown in class!)
-* Add the `longest_tweet` view function and corresponding template.
-* Test it all again.
+# ROUTE LIST
+/ --> base.html
+/names --> name_example.html
+/news -->  news.html
+/news_results --> news_results.html
+/sources --> sources.html
 
 
-## Files and structure included
+## CODE REQUIREMENTS
 
-### Provided:
+**Ensure that the SI364midterm.py file has all the setup (app.config values, import statements, code to run the app if that file is run, etc) necessary to run the Flask application, and the application runs correctly on http://localhost:5000 (and the other routes you set up)**
+**Add navigation in base.html with links (using a href tags) that lead to every other viewable page in the application. (e.g. in the lecture examples from the Feb 9 lecture, like this)**
+**Ensure that all templates in the application inherit (using template inheritance, with extends) from base.html and include at least one additional block**
+**Include at least 2 additional template .html files we did not provide**
+**At least one additional template with a Jinja template for loop and at least one additional template with a Jinja template conditional. (These could be in the same template, and could be 1 of the 2 additional template files)**
+**At least one errorhandler for a 404 error and a corresponding template**
+**At least one request to a REST API that is based on data submitted in a WTForm**
+**At least one additional (not provided) WTForm that sends data with a GET request to a new page**
+**At least one additional (not provided) WTForm that sends data with a POST request to the same page**
+**At least one custom validator for a field in a WTForm**
+**At least 2 additional model classes**
+**Have a one:many relationship that works properly built between 2 of your models**
+**Successfully save data to each table**
+**Successfully query data from each of your models (so query at least one column, or all data, from every database table you have a model for)**
+**Query data using an .all() method in at least one view function and send the results of that query to a template**
+**Include at least one use of redirect. (HINT: This should probably happen in the view function where data is posted...)**
+**Include at least one use of url_for. (HINT: This could happen where you render a form...)**
+**Have at least 3 view functions that are not included with the code we have provided. (But you may have more! Make sure you include ALL view functions in the app in the documentation and ALL pages in the app in the navigation links of base.html.)**
 
-* Custom errorhandler routes for 404 and 500 errors
-* Custom error templates 404.html and 500.html
-* Other templates:
-    * `base.html` (the basis from which others inherit)
-    * `index.html`
-    * `all_users.html`
-    * `all_tweets.html`
-* Necessary import statements and some parts of necessary app setup
-* Scaffolding comments inside `SI364W18_HW3.py`
-
-### You should add:
-
-* A form class definition
-* Model class definitions
-* A bunch of code, as specified in the `SI364W18_HW3.py` file
-* 1 template (see the instructions for `longest_route` at the end of the .py file)
-* Comments at the top of your file specifying anyone with whom you worked on this HW
-
-**Important:** (This HW is not exactly like any from past semesters, but note that it is unethical to use others' work from this semester or other semesters or to look at old semester's work and use it as your own.)
-
-You should *not* change any file names or edit provided templates.
+# Additional Requirements for an additional 200 points (to reach 100%) -- an app with extra functionality!
+* (100 points) Include an additional model class (to make at least 4 total in the application) with at least 3 columns. Save data to it AND query data from it; use the data you query in a view-function, and as a result of querying that data, something should show up in a view. (The data itself should show up, OR the result of a request made with the data should show up.)
+**(100 points) Write code in your Python file that will allow a user to submit duplicate data to a form, but will not save duplicate data (like the same user should not be able to submit the exact same tweet text for HW3)**
