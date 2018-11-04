@@ -200,7 +200,7 @@ def sources():
     for s in sources:
         name = Name.query.filter_by(id=s.name_id).first()
         all_sources.append((s,name))
-    print(all_sources)
+    #print(all_sources)
 
     return render_template('sources.html',form=form, all_sources=all_sources)
 
